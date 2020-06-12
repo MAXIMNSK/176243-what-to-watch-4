@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
-* Студент: [Maxim Savickiy](https://up.htmlacademy.ru/react/4/user/176243).
-* Наставник: `Неизвестно`.
+* Студент: [`Maxim Savickiy`](https://htmlacademy.ru/profile/id176243).
+* Наставник: [`Артём Рудов`](https://htmlacademy.ru/profile/artrudov).
 
 ---
 
