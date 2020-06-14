@@ -1,10 +1,8 @@
-import React from "react";
+import React, {Fragment} from "react";
 
-const Main = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {filmName: name, filmGenre: genre, filmRelease: release} = props;
-
-  return <React.Fragment>
+// eslint-disable-next-line react/prop-types
+const Main = ({filmName, filmGenre, releaseDate}) => {
+  return <Fragment>
     <section className="movie-card">
       <div className="movie-card__bg">
         <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -35,10 +33,10 @@ const Main = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{name}</h2>
+            <h2 className="movie-card__title">{filmName}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{release}</span>
+              <span className="movie-card__genre">{filmGenre}</span>
+              <span className="movie-card__year">{releaseDate}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -303,7 +301,7 @@ const Main = (props) => {
         </div>
       </footer>
     </div>
-  </React.Fragment>;
+  </Fragment>;
 };
 
 export default Main;
