@@ -1,7 +1,10 @@
 import React from "react";
+import FilmCard from "./filmCard.jsx";
+import propTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
-const Main = ({filmName, filmGenre, releaseDate}) => {
+const getRandomNumber = () => Math.floor(Math.random() * 1e6);
+
+const Main = ({filmName, filmGenre, releaseDate, filmList}) => {
   return <>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -96,16 +99,22 @@ const Main = ({filmName, filmGenre, releaseDate}) => {
         </ul>
 
         <div className="catalog__movies-list">
-          <article className="small-movie-card catalog__movies-card">
+
+          {filmList.map((element) => <FilmCard
+            key = {getRandomNumber()}
+            filmName = {element}
+          />)}
+
+          {/* <article className="small-movie-card catalog__movies-card">
             <div className="small-movie-card__image">
               <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
             </div>
             <h3 className="small-movie-card__title">
               <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
             </h3>
-          </article>
+          </article> */}
 
-          <article className="small-movie-card catalog__movies-card">
+          {/* <article className="small-movie-card catalog__movies-card">
             <div className="small-movie-card__image">
               <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
             </div>
@@ -279,7 +288,7 @@ const Main = ({filmName, filmGenre, releaseDate}) => {
             <h3 className="small-movie-card__title">
               <a className="small-movie-card__link" href="movie-page.html">Midnight Special</a>
             </h3>
-          </article>
+          </article> */}
         </div>
 
         <div className="catalog__more">
@@ -302,6 +311,13 @@ const Main = ({filmName, filmGenre, releaseDate}) => {
       </footer>
     </div>
   </>;
+};
+
+Main.propTypes = {
+  filmName: propTypes.string.isRequired,
+  filmGenre: propTypes.string.isRequired,
+  releaseDate: propTypes.number.isRequired,
+  filmList: propTypes.arrayOf(propTypes.string),
 };
 
 export default Main;
