@@ -3,7 +3,6 @@ import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main";
 
-const clickCount = 1;
 const possibleOtherFilms = [`The Last Airbender`, `Jaws`, `Public Enemies`, `Dark`];
 const mainComponentMock = {
   name: `Joker`,
@@ -19,21 +18,20 @@ Enzyme.configure({
 describe(`Main component`, () => {
   it(`E2E test for main component`, () => {
     const {name, genre, release, list} = mainComponentMock;
-    const onClickHeadline = jest.fn();
-
+    const onClickHeadlineCard = jest.fn();
     const mainComponent = shallow(
         <Main
           filmName = {name}
           filmGenre = {genre}
           releaseDate = {release}
           filmList = {list}
-          onClick = {onClickHeadline}
+          onClick = {onClickHeadlineCard}
         />
     );
 
-    const headlinesOfCards = mainComponent.find(`h3.small-movie-card__title`);
-    headlinesOfCards.forEach((element) => element.simulate(`click`));
+    const headline = mainComponent.find(`h3.small-movie-card__title`);
+    headline.forEach((currentElement) => currentElement.simulate(`click`));
 
-    expect(onClickHeadline).toHaveBeenCalledTimes(clickCount);
+    expect(onClickHeadlineCard).toHaveBeenCalledTimes(headline.length);
   });
 });
