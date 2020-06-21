@@ -1,6 +1,5 @@
 import React from "react";
 import propTypes from 'prop-types';
-
 import Main from "../../src/components/main.jsx";
 
 const App = ({filmName, filmGenre, releaseDate, filmList}) => {

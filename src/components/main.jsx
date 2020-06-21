@@ -4,10 +4,11 @@ import propTypes from 'prop-types';
 
 const getRandomNumber = () => Math.floor(Math.random() * 1e6);
 
-const getFilmCard = (film) => (<FilmCard key = {getRandomNumber()} filmName = {film} />);
-const getOtherCardsFilms = (otherFilms) => otherFilms.map((film) => getFilmCard(film));
+const getFilmCard = (film, onClickHeadlineCard) => (<FilmCard key = {getRandomNumber()} filmName = {film} onClickHeadlineCard = {onClickHeadlineCard} />);
 
-const Main = ({filmName, filmGenre, releaseDate, filmList}) => {
+const getOtherCardsFilms = (otherFilms, onClickHeadlineCard) => otherFilms.map((film) => getFilmCard(film, onClickHeadlineCard));
+
+const Main = ({filmName, filmGenre, releaseDate, filmList, onClickHeadlineCard}) => {
   return <>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -103,7 +104,7 @@ const Main = ({filmName, filmGenre, releaseDate, filmList}) => {
 
         <div className="catalog__movies-list">
 
-          {getOtherCardsFilms(filmList)}
+          {getOtherCardsFilms(filmList, onClickHeadlineCard)}
 
         </div>
 
@@ -134,6 +135,7 @@ Main.propTypes = {
   filmGenre: propTypes.string.isRequired,
   releaseDate: propTypes.number.isRequired,
   filmList: propTypes.arrayOf(propTypes.string),
+  onClickHeadlineCard: propTypes.func,
 };
 
 export default Main;
