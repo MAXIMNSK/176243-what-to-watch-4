@@ -135,7 +135,7 @@ Main.propTypes = {
   filmGenre: propTypes.string.isRequired,
   releaseDate: propTypes.number.isRequired,
   filmList: propTypes.arrayOf(propTypes.string),
-  onClickHeadlineCard: propTypes.func.isRequired,
+  onClickHeadlineCard: propTypes.func,
 };
 
 export default Main;

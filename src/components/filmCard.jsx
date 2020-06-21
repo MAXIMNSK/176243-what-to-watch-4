@@ -16,7 +16,7 @@ const FilmCard = ({filmName, onClickHeadlineCard}) => {
 
 FilmCard.propTypes = {
   filmName: propTypes.string.isRequired,
-  onClickHeadlineCard: propTypes.func.isRequired,
+  onClickHeadlineCard: propTypes.func,
 };
 
 export default FilmCard;

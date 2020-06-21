@@ -19,19 +19,21 @@ Enzyme.configure({
 describe(`Main component`, () => {
   it(`E2E test for main component`, () => {
     const {name, genre, release, list} = mainComponentMock;
-    const clickOnHeadline = jest.fn();
+    const onClickHeadline = jest.fn();
 
-    const mainComponent = shallow(<Main
-      filmName = {name}
-      filmGenre = {genre}
-      releaseDate = {release}
-      filmList = {list}
-      onClick = {clickOnHeadline}
-    />);
+    const mainComponent = shallow(
+        <Main
+          filmName = {name}
+          filmGenre = {genre}
+          releaseDate = {release}
+          filmList = {list}
+          onClick = {onClickHeadline}
+        />
+    );
 
     const headlinesOfCards = mainComponent.find(`h3.small-movie-card__title`);
     headlinesOfCards.forEach((element) => element.simulate(`click`));
 
-    expect(clickOnHeadline).toHaveBeenCalledTimes(clickCount);
+    expect(onClickHeadline).toHaveBeenCalledTimes(clickCount);
   });
 });
