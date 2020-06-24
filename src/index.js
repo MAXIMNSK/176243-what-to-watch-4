@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "../src/components/app.jsx";
+import listOtherFilms from "./mocks/film.js";
 
-const films = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`];
 const root = document.getElementById(`root`);
 
 ReactDOM.render(
@@ -11,7 +11,7 @@ ReactDOM.render(
       filmName = {`The Grand Budapest Hotel`}
       filmGenre = {`Drama`}
       releaseDate = {2014}
-      filmList = {films}
+      filmList = {listOtherFilms}
     />,
     root
 );

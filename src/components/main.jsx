@@ -1,14 +1,9 @@
 import React from "react";
-import FilmCard from "./filmCard.jsx";
 import propTypes from 'prop-types';
 
-const getRandomNumber = () => Math.floor(Math.random() * 1e6);
+import ListFilms from "./list-films.jsx";
 
-const getFilmCard = (film, onClickHeadlineCard) => (<FilmCard key = {getRandomNumber()} filmName = {film} onClickHeadlineCard = {onClickHeadlineCard} />);
-
-const getOtherCardsFilms = (otherFilms, onClickHeadlineCard) => otherFilms.map((film) => getFilmCard(film, onClickHeadlineCard));
-
-const Main = ({filmName, filmGenre, releaseDate, filmList, onClickHeadlineCard}) => {
+const Main = ({filmName, filmGenre, releaseDate, filmList}) => {
   return <>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -104,7 +99,7 @@ const Main = ({filmName, filmGenre, releaseDate, filmList, onClickHeadlineCard})
 
         <div className="catalog__movies-list">
 
-          {getOtherCardsFilms(filmList, onClickHeadlineCard)}
+          {<ListFilms listOtherFilms = {filmList}></ListFilms>}
 
         </div>
 
@@ -134,8 +129,10 @@ Main.propTypes = {
   filmName: propTypes.string.isRequired,
   filmGenre: propTypes.string.isRequired,
   releaseDate: propTypes.number.isRequired,
-  filmList: propTypes.arrayOf(propTypes.string),
-  onClickHeadlineCard: propTypes.func,
+  filmList: propTypes.arrayOf(propTypes.shape({
+    name: propTypes.string.isRequired,
+    picture: propTypes.string.isRequired,
+  })),
 };
 
 export default Main;
