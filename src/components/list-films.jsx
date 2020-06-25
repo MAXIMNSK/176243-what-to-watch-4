@@ -1,11 +1,9 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import propTypes from 'prop-types';
 
 import FilmCard from "./film-card.jsx";
 
-const getRandomNumber = () => Math.floor(Math.random() * 1e6);
-
-class ListFilms extends React.PureComponent {
+class ListFilms extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -20,17 +18,20 @@ class ListFilms extends React.PureComponent {
   render() {
     const {listOtherFilms} = this.props;
 
-    return listOtherFilms.map((film) => (
+    return listOtherFilms.map((currentFilm) => this._getFilm(currentFilm));
+  }
+
+  _getFilm(film) {
+    return (
       <FilmCard
         filmName = {film.name}
         picture = {film.picture}
+        key = {film.id}
 
         handleCardTitleClick = {this._handleCardTitleClick}
         handleCardMouseEnter = {this._handleCardMouseEnter}
-
-        key = {getRandomNumber()}
       />
-    ));
+    );
   }
 
   _handleCardTitleClick(evt) {
@@ -52,6 +53,7 @@ ListFilms.propTypes = {
   listOtherFilms: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,
+    id: propTypes.string.isRequired,
   })),
 };
 

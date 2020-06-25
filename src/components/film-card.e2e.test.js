@@ -5,8 +5,9 @@ import Adapter from "enzyme-adapter-react-16";
 import FilmCard from "./film-card.jsx";
 
 const mock = {
-  filmName: `Форрест Гамп`,
+  name: `Форрест Гамп`,
   picture: `https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg`,
+  id: `f1`
 };
 
 Enzyme.configure({
@@ -15,12 +16,12 @@ Enzyme.configure({
 
 describe(`Film card tests`, () => {
   it(`E2E test for film card component`, () => {
-    const {filmName, picture} = mock;
+    const {name, picture} = mock;
     const onCardMouseEnter = jest.fn();
 
     const filmCardComponent = shallow(
         <FilmCard
-          filmName = {filmName}
+          filmName = {name}
           picture = {picture}
           onMouseEnter = {onCardMouseEnter}
         />

@@ -19,6 +19,7 @@ App.propTypes = {
   filmList: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,
+    id: propTypes.string.isRequired,
   })),
 };
 

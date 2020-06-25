@@ -99,7 +99,7 @@ const Main = ({filmName, filmGenre, releaseDate, filmList}) => {
 
         <div className="catalog__movies-list">
 
-          {<ListFilms listOtherFilms = {filmList}></ListFilms>}
+          {<ListFilms listOtherFilms={filmList} />}
 
         </div>
 
@@ -132,6 +132,7 @@ Main.propTypes = {
   filmList: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,
+    id: propTypes.string.isRequired,
   })),
 };
 
