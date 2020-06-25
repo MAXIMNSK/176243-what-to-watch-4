@@ -5,10 +5,10 @@ import Main from "../../src/components/main.jsx";
 
 const App = ({filmName, filmGenre, releaseDate, filmList}) => {
   return <Main
-    filmName = {filmName}
-    filmGenre = {filmGenre}
-    releaseDate = {releaseDate}
-    filmList = {filmList}
+    filmName={filmName}
+    filmGenre={filmGenre}
+    releaseDate={releaseDate}
+    filmList={filmList}
   />;
 };
 

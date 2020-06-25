@@ -24,12 +24,12 @@ class ListFilms extends PureComponent {
   _getFilm(film) {
     return (
       <FilmCard
-        filmName = {film.name}
-        picture = {film.picture}
-        key = {film.id}
+        filmName={film.name}
+        picture={film.picture}
+        key={film.id}
 
-        handleCardTitleClick = {this._handleCardTitleClick}
-        handleCardMouseEnter = {this._handleCardMouseEnter}
+        handleCardTitleClick={this._handleCardTitleClick}
+        handleCardMouseEnter={this._handleCardMouseEnter}
       />
     );
   }

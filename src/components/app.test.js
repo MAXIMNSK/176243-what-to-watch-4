@@ -35,10 +35,10 @@ describe(`App component total check`, () => {
   it(`Check should render app component`, () => {
     const currentComponent = renderer.create(
         <App
-          filmName = {mock.name}
-          filmGenre = {mock.genre}
-          releaseDate = {mock.release}
-          filmList = {mock.list}
+          filmName={mock.name}
+          filmGenre={mock.genre}
+          releaseDate={mock.release}
+          filmList={mock.list}
         />
     ).toJSON();
 

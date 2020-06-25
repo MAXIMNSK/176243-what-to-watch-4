@@ -13,8 +13,8 @@ describe(`Film card component total check`, () => {
   it(`Check should render film card component`, () => {
     const currentComponent = renderer.create(
         <FilmCard
-          filmName = {mock.name}
-          picture = {mock.picture}
+          filmName={mock.name}
+          picture={mock.picture}
         />
     ).toJSON();
 

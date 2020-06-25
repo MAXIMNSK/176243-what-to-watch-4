@@ -21,9 +21,9 @@ describe(`Film card tests`, () => {
 
     const filmCardComponent = shallow(
         <FilmCard
-          filmName = {name}
-          picture = {picture}
-          onMouseEnter = {onCardMouseEnter}
+          filmName={name}
+          picture={picture}
+          onMouseEnter={onCardMouseEnter}
         />
     );
 

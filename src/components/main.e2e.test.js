@@ -43,11 +43,11 @@ describe(`Main component`, () => {
 
     const mainComponent = shallow(
         <Main
-          filmName = {name}
-          filmGenre = {genre}
-          releaseDate = {release}
-          filmList = {list}
-          onClick = {onClickHeadlineCard}
+          filmName={name}
+          filmGenre={genre}
+          releaseDate={release}
+          filmList={list}
+          onClick={onClickHeadlineCard}
         />
     );
 

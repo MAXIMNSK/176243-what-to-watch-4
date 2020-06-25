@@ -30,7 +30,7 @@ describe(`List films component total check`, () => {
   it(`Check should render list films component`, () => {
     const currentComponent = renderer.create(
         <ListFilms
-          listOtherFilms = {mock}
+          listOtherFilms={mock}
         />
     ).toJSON();
 
