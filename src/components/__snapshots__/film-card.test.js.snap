@@ -8,9 +8,9 @@ exports[`Film card component total check Check should render film card component
     className="small-movie-card__image"
   >
     <img
-      alt="Fantastic Beasts: The Crimes of Grindelwald"
+      alt="Форрест Гамп"
       height="175"
-      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      src="https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"
       width="280"
     />
   </div>
@@ -21,7 +21,7 @@ exports[`Film card component total check Check should render film card component
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Joker
+      Форрест Гамп
     </a>
   </h3>
 </article>
