@@ -42,7 +42,7 @@ describe(`App component total check`, () => {
           filmName={mock.name}
           filmGenre={mock.genre}
           releaseDate={mock.release}
-          filmList={mock.list}
+          listOtherFilms={mock.list}
         />
     ).toJSON();
 
