@@ -11,7 +11,7 @@ ReactDOM.render(
       filmName = {`The Grand Budapest Hotel`}
       filmGenre = {`Drama`}
       releaseDate = {2014}
-      filmList = {listOtherFilms}
+      listOtherFilms = {listOtherFilms}
     />,
     root
 );

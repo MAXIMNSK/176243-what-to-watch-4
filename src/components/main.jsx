@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 import ListFilms from "./list-films.jsx";
 
-const Main = ({filmName, filmGenre, releaseDate, filmList}) => {
+const Main = ({filmName, filmGenre, releaseDate, listOtherFilms}) => {
   return <>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -99,7 +99,7 @@ const Main = ({filmName, filmGenre, releaseDate, filmList}) => {
 
         <div className="catalog__movies-list">
 
-          {<ListFilms listOtherFilms={filmList} />}
+          {<ListFilms listOtherFilms={listOtherFilms} />}
 
         </div>
 
@@ -129,10 +129,11 @@ Main.propTypes = {
   filmName: propTypes.string.isRequired,
   filmGenre: propTypes.string.isRequired,
   releaseDate: propTypes.number.isRequired,
-  filmList: propTypes.arrayOf(propTypes.shape({
+  listOtherFilms: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,
     id: propTypes.string.isRequired,
+    preview: propTypes.string.isRequired,
   })),
 };
 

@@ -1,24 +1,51 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import propTypes from 'prop-types';
 
-const FilmCard = ({filmName, picture, handleCardTitleClick, handleCardMouseEnter}) => {
-  return <>
-    <article onMouseEnter={handleCardMouseEnter} className="small-movie-card catalog__movies-card">
-      <div className="small-movie-card__image">
-        <img src={picture} alt={filmName} width="280" height="175" />
-      </div>
-      <h3 onClick={handleCardTitleClick} className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{filmName}</a>
-      </h3>
-    </article>
-  </>;
-};
+import VideoPlayer from "./video-player.jsx";
+
+class FilmCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      playing: false,
+    };
+  }
+
+  render() {
+    const {name, poster, preview, onmouseclick, onmouseenter} = this.props;
+
+    return (
+      <>
+        <article
+          onMouseEnter={() => {
+            onmouseenter;
+            this.setState({playing: true});
+          }}
+          onMouseLeave={() => {
+            this.setState({playing: false});
+          }}
+          className="small-movie-card catalog__movies-card"
+        >
+          <div className="small-movie-card__image">
+            <VideoPlayer src={preview} poster={poster} playStatus={this.state.playing} />
+          </div>
+
+          <h3 onClick={onmouseclick} className="small-movie-card__title">
+            <a className="small-movie-card__link" href="movie-page.html">{name}</a>
+          </h3>
+        </article>
+      </>
+    );
+  }
+}
 
 FilmCard.propTypes = {
-  filmName: propTypes.string.isRequired,
-  picture: propTypes.string.isRequired,
-  handleCardTitleClick: propTypes.func,
-  handleCardMouseEnter: propTypes.func,
+  name: propTypes.string,
+  poster: propTypes.string,
+  preview: propTypes.string,
+  onmouseclick: propTypes.func,
+  onmouseenter: propTypes.func,
 };
 
 export default FilmCard;
