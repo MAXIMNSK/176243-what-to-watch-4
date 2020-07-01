@@ -25,9 +25,9 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {playStatus} = this.props;
+    const {focusOnCard} = this.props;
 
-    if (playStatus === true) {
+    if (focusOnCard === true) {
       this.timer = setTimeout(() => this.playerRef.current.play(), 1000);
     } else {
       clearTimeout(this.timer);
@@ -58,7 +58,7 @@ class VideoPlayer extends PureComponent {
 VideoPlayer.propTypes = {
   src: propTypes.string,
   poster: propTypes.string,
-  playStatus: propTypes.bool,
+  focusOnCard: propTypes.bool,
 };
 
 

@@ -8,8 +8,11 @@ class FilmCard extends PureComponent {
     super(props);
 
     this.state = {
-      playing: false,
+      onFocus: false,
     };
+
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   render() {
@@ -18,17 +21,13 @@ class FilmCard extends PureComponent {
     return (
       <>
         <article
-          onMouseEnter={() => {
-            onmouseenter;
-            this.setState({playing: true});
-          }}
-          onMouseLeave={() => {
-            this.setState({playing: false});
-          }}
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={onmouseenter}
+          onMouseOver={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
         >
           <div className="small-movie-card__image">
-            <VideoPlayer src={preview} poster={poster} playStatus={this.state.playing} />
+            <VideoPlayer src={preview} poster={poster} focusOnCard={this.state.onFocus} />
           </div>
 
           <h3 onClick={onmouseclick} className="small-movie-card__title">
@@ -37,6 +36,18 @@ class FilmCard extends PureComponent {
         </article>
       </>
     );
+  }
+
+  handleMouseEnter() {
+    this.setState({
+      onFocus: true
+    });
+  }
+
+  handleMouseLeave() {
+    this.setState({
+      onFocus: false
+    });
   }
 }
 

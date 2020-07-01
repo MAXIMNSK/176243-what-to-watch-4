@@ -6,6 +6,7 @@ Array [
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -35,6 +36,7 @@ Array [
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -64,6 +66,7 @@ Array [
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -93,6 +96,7 @@ Array [
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"

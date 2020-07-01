@@ -7,7 +7,7 @@ const mock = {
   src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   picture: `https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg`,
   id: `f1`,
-  playStatus: false,
+  focusOnCard: false,
 };
 
 describe(`Video player snapshot tests`, () => {
@@ -16,7 +16,7 @@ describe(`Video player snapshot tests`, () => {
         <VideoPlayer
           src={mock.src}
           poster={mock.picture}
-          playStatus={mock.playStatus}
+          focusOnCard={mock.focusOnCard}
         />
     ).toJSON();
 
