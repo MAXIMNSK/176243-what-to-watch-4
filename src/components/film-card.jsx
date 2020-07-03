@@ -16,13 +16,13 @@ class FilmCard extends PureComponent {
   }
 
   render() {
-    const {name, poster, preview, onmouseclick, onmouseenter} = this.props;
+    const {name, poster, preview, handleMouseClick, handleMouseEnter} = this.props;
 
     return (
       <>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseEnter={onmouseenter}
+          onMouseEnter={handleMouseEnter}
           onMouseOver={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
@@ -30,7 +30,7 @@ class FilmCard extends PureComponent {
             <VideoPlayer src={preview} poster={poster} focusOnCard={this.state.onFocus} />
           </div>
 
-          <h3 onClick={onmouseclick} className="small-movie-card__title">
+          <h3 onClick={handleMouseClick} className="small-movie-card__title">
             <a className="small-movie-card__link" href="movie-page.html">{name}</a>
           </h3>
         </article>
@@ -55,8 +55,8 @@ FilmCard.propTypes = {
   name: propTypes.string,
   poster: propTypes.string,
   preview: propTypes.string,
-  onmouseclick: propTypes.func,
-  onmouseenter: propTypes.func,
+  handleMouseClick: propTypes.func,
+  handleMouseEnter: propTypes.func,
 };
 
 export default FilmCard;

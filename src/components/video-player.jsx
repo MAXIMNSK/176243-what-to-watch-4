@@ -5,35 +5,38 @@ class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.playerRef = React.createRef();
+    this.player = React.createRef();
 
     this.timer = null;
+    this.delay = 1000;
 
     this.state = {
       play: false,
       pause: false,
     };
-  }
 
-  componentDidMount() {
-
+    this._handlerTimeout = this._handlerTimeout.bind(this);
   }
 
   componentWillUnmount() {
-    this.playerRef.current.src = ``;
-    this.playerRef.current.poster = ``;
+    this.player.current.src = ``;
+    this.player.current.poster = ``;
   }
 
   componentDidUpdate() {
     const {focusOnCard} = this.props;
 
-    if (focusOnCard === true) {
-      this.timer = setTimeout(() => this.playerRef.current.play(), 1000);
+    if (focusOnCard) {
+      this.timer = setTimeout(this._handlerTimeout, this.delay);
     } else {
       clearTimeout(this.timer);
       this.timer = null;
-      this.playerRef.current.load();
+      this.player.current.load();
     }
+  }
+
+  _handlerTimeout() {
+    this.player.current.play();
   }
 
   render() {
@@ -43,7 +46,7 @@ class VideoPlayer extends PureComponent {
       <video
         src={src}
         poster={poster}
-        ref={this.playerRef}
+        ref={this.player}
 
         width="280"
         height="175"
