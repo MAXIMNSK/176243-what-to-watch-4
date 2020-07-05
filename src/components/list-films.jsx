@@ -29,8 +29,8 @@ class ListFilms extends PureComponent {
         preview={preview}
         key={id}
 
-        handleMouseClick={this._handleCardTitleClick}
-        handleMouseEnter={this._handleCardMouseEnter}
+        onMouseClick={this._handleCardTitleClick}
+        onMouseEnter={this._handleCardMouseEnter}
       />
     );
   }
