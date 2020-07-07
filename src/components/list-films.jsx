@@ -21,15 +21,16 @@ class ListFilms extends PureComponent {
     return listOtherFilms.map((currentFilm) => this._getFilm(currentFilm));
   }
 
-  _getFilm(film) {
+  _getFilm({name, picture, id, preview}) {
     return (
       <FilmCard
-        filmName={film.name}
-        picture={film.picture}
-        key={film.id}
+        name={name}
+        poster={picture}
+        preview={preview}
+        key={id}
 
-        handleCardTitleClick={this._handleCardTitleClick}
-        handleCardMouseEnter={this._handleCardMouseEnter}
+        onMouseClick={this._handleCardTitleClick}
+        onMouseEnter={this._handleCardMouseEnter}
       />
     );
   }
@@ -54,6 +55,7 @@ ListFilms.propTypes = {
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,
     id: propTypes.string.isRequired,
+    preview: propTypes.string.isRequired,
   })),
 };
 

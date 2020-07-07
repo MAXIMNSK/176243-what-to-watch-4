@@ -7,6 +7,7 @@ import FilmCard from "./film-card.jsx";
 const mock = {
   name: `Форрест Гамп`,
   picture: `https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg`,
+  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   id: `f1`
 };
 
@@ -16,13 +17,14 @@ Enzyme.configure({
 
 describe(`Film card tests`, () => {
   it(`E2E test for film card component`, () => {
-    const {name, picture} = mock;
+    const {name, picture, preview} = mock;
     const onCardMouseEnter = jest.fn();
 
     const filmCardComponent = shallow(
         <FilmCard
           filmName={name}
           picture={picture}
+          preview={preview}
           onMouseEnter={onCardMouseEnter}
         />
     );

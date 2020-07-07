@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Video player snapshot tests First test player 1`] = `
+<video
+  controls={true}
+  height="175"
+  muted={true}
+  poster="https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+  width="280"
+/>
+`;
