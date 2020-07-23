@@ -1,9 +1,10 @@
 import React from "react";
 import propTypes from 'prop-types';
 
+import ListGenres from "./list-genres.jsx";
 import ListFilms from "./list-films.jsx";
 
-const Main = ({filmName, filmGenre, releaseDate, listOtherFilms}) => {
+const Main = ({filmName, filmGenre, releaseDate, listAllFilms}) => {
   return <>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -64,42 +65,11 @@ const Main = ({filmName, filmGenre, releaseDate, listOtherFilms}) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <ul className="catalog__genres-list">
-          <li className="catalog__genres-item catalog__genres-item--active">
-            <a href="#" className="catalog__genres-link">All genres</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Comedies</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Crime</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Documentary</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Dramas</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Horror</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Kids & Family</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Romance</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Sci-Fi</a>
-          </li>
-          <li className="catalog__genres-item">
-            <a href="#" className="catalog__genres-link">Thrillers</a>
-          </li>
-        </ul>
+        {<ListGenres listAllFilms={listAllFilms} />}
 
         <div className="catalog__movies-list">
 
-          {<ListFilms listOtherFilms={listOtherFilms} />}
+          {<ListFilms listAllFilms={listAllFilms} />}
 
         </div>
 
@@ -129,11 +99,12 @@ Main.propTypes = {
   filmName: propTypes.string.isRequired,
   filmGenre: propTypes.string.isRequired,
   releaseDate: propTypes.number.isRequired,
-  listOtherFilms: propTypes.arrayOf(propTypes.shape({
+  listAllFilms: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,
     id: propTypes.string.isRequired,
     preview: propTypes.string.isRequired,
+    genre: propTypes.string.isRequired,
   })),
 };
 

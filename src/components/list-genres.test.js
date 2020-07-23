@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import {ListFilms} from "./list-films.jsx";
+import {ListGenres} from "./list-genres.jsx";
 
 const mock = [
   {
@@ -34,10 +34,10 @@ const mock = [
   },
 ];
 
-describe(`List films component total check`, () => {
-  it(`Check should render list films component`, () => {
+describe(`List genres component checks`, () => {
+  it(`Check should render list genres component`, () => {
     const currentComponent = renderer.create(
-        <ListFilms
+        <ListGenres
           listAllFilms={mock}
         />
     ).toJSON();

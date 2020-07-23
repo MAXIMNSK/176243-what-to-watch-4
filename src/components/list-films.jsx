@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import propTypes from 'prop-types';
 
 import FilmCard from "./film-card.jsx";
+import {connect} from "react-redux";
 
 class ListFilms extends PureComponent {
   constructor(props) {
@@ -16,9 +17,16 @@ class ListFilms extends PureComponent {
   }
 
   render() {
-    const {listOtherFilms} = this.props;
+    const {listAllFilms, payload} = this.props;
+    let temp = null;
 
-    return listOtherFilms.map((currentFilm) => this._getFilm(currentFilm));
+    if (payload !== undefined) {
+      temp = payload;
+    } else {
+      temp = listAllFilms;
+    }
+
+    return temp.map((currentFilm) => this._getFilm(currentFilm));
   }
 
   _getFilm({name, picture, id, preview}) {
@@ -51,12 +59,19 @@ class ListFilms extends PureComponent {
 }
 
 ListFilms.propTypes = {
-  listOtherFilms: propTypes.arrayOf(propTypes.shape({
+  payload: propTypes.undefined || propTypes.array,
+  listAllFilms: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,
     id: propTypes.string.isRequired,
     preview: propTypes.string.isRequired,
+    genre: propTypes.string.isRequired,
   })),
 };
 
-export default ListFilms;
+const mapStateToProps = (state) => {
+  return Object.assign({}, state);
+};
+
+export {ListFilms};
+export default connect(mapStateToProps, null)(ListFilms);
