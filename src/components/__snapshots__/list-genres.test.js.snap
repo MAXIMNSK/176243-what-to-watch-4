@@ -6,6 +6,7 @@ exports[`List genres component checks Check should render list genres component 
 >
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -16,26 +17,73 @@ exports[`List genres component checks Check should render list genres component 
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
       href="#"
     >
-      Comedy
+      Comedies
     </a>
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
       href="#"
     >
-      Thriller
+      Crime
     </a>
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Documentary
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Dramas
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Horror
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Kids & Family
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
@@ -46,12 +94,24 @@ exports[`List genres component checks Check should render list genres component 
   </li>
   <li
     className="catalog__genres-item"
+    onClick={[Function]}
   >
     <a
       className="catalog__genres-link"
       href="#"
     >
-      Dramas
+      Sci-Fi
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Thrillers
     </a>
   </li>
 </ul>

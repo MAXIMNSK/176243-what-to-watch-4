@@ -1,16 +1,18 @@
 import React, {PureComponent} from "react";
-import {connect} from "react-redux";
 import propTypes from 'prop-types';
+import {connect} from "react-redux";
 
 import getUniqueGenres from "../getUniqueGenres";
+import listAllFilms from "../mocks/film";
 
 class ListGenres extends PureComponent {
   constructor(props) {
     super(props);
+
+    this._handleOnGenreClick = this._handleOnGenreClick.bind(this);
   }
 
   render() {
-    const {listAllFilms} = this.props;
     const uniqueGenres = getUniqueGenres(listAllFilms);
 
     return this._getListGenres(uniqueGenres);
@@ -26,7 +28,7 @@ class ListGenres extends PureComponent {
 
   _getGenre(genre, index) {
     return (
-      <li className={this._getCorrectClassName(genre)} onClick={this.props.changeGenre} key={this._getKey(genre, index)}>
+      <li className={this._getCorrectClassName(genre)} onClick={this._handleOnGenreClick} key={this._getKey(genre, index)}>
         <a href="#" className="catalog__genres-link">{genre}</a>
       </li>
     );
@@ -38,14 +40,19 @@ class ListGenres extends PureComponent {
     return type === currentGenre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`;
   }
 
+  _handleOnGenreClick(evt) {
+    evt.preventDefault();
+    this.props.changeGenre(evt);
+  }
+
   _getKey(genre, index) {
     return genre.slice(0, 1) + index;
   }
 }
 
 ListGenres.propTypes = {
-  type: propTypes.string.isRequired,
-  changeGenre: propTypes.func.isRequired,
+  type: propTypes.string,
+  changeGenre: propTypes.func,
   listAllFilms: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,
@@ -55,13 +62,12 @@ ListGenres.propTypes = {
   })),
 };
 
-const mapStateToProps = (state) => {
-  return Object.assign({}, state);
+const mapStateToProps = ({type, payload}) => {
+  return Object.assign({}, {type, payload});
 };
 
 const mapDispatchToProps = (dispatch) => ({
   changeGenre(evt) {
-    evt.preventDefault();
     dispatch({type: evt.target.textContent});
   }
 });

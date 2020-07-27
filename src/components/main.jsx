@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import ListGenres from "./list-genres.jsx";
 import ListFilms from "./list-films.jsx";
 
-const Main = ({filmName, filmGenre, releaseDate, listAllFilms}) => {
+const Main = ({filmName, filmGenre, releaseDate}) => {
   return <>
     <section className="movie-card">
       <div className="movie-card__bg">
@@ -65,11 +65,11 @@ const Main = ({filmName, filmGenre, releaseDate, listAllFilms}) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        {<ListGenres listAllFilms={listAllFilms} />}
+        {<ListGenres />}
 
         <div className="catalog__movies-list">
 
-          {<ListFilms listAllFilms={listAllFilms} />}
+          {<ListFilms />}
 
         </div>
 
