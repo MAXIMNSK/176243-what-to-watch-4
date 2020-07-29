@@ -62,9 +62,7 @@ ListGenres.propTypes = {
   })),
 };
 
-const mapStateToProps = ({type, payload}) => {
-  return Object.assign({}, {type, payload});
-};
+const mapStateToProps = ({type, payload}) => ({type, payload});
 
 const mapDispatchToProps = (dispatch) => ({
   changeGenre(evt) {

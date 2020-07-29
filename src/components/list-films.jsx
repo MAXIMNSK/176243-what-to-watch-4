@@ -70,9 +70,7 @@ ListFilms.propTypes = {
   })),
 };
 
-const mapStateToProps = ({type, payload}) => {
-  return Object.assign({}, {type, payload});
-};
+const mapStateToProps = ({type, payload}) => ({type, payload});
 
 export {ListFilms};
 export default connect(mapStateToProps)(ListFilms);
