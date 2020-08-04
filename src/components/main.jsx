@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 
 import ListGenres from "./list-genres.jsx";
 import ListFilms from "./list-films.jsx";
+import withActiveItem from "../hoc/withActiveItem";
 
 const Main = ({filmName, filmGenre, releaseDate}) => {
   return <>
@@ -65,11 +66,11 @@ const Main = ({filmName, filmGenre, releaseDate}) => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        {<ListGenres />}
+        {withActiveItem(ListGenres)}
 
         <div className="catalog__movies-list">
 
-          {<ListFilms />}
+          {withActiveItem(ListFilms)}
 
         </div>
 
@@ -99,6 +100,7 @@ Main.propTypes = {
   filmName: propTypes.string.isRequired,
   filmGenre: propTypes.string.isRequired,
   releaseDate: propTypes.number.isRequired,
+
   listAllFilms: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,

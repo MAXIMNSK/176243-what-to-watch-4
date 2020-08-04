@@ -7,9 +7,6 @@ class VideoPlayer extends PureComponent {
 
     this.player = React.createRef();
 
-    this.timer = null;
-    this.delay = 1000;
-
     this.state = {
       play: false,
       pause: false,
@@ -24,13 +21,14 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {focusOnCard} = this.props;
+    const {focusOnCard, playerProperties} = this.props;
+    let {timer, delay} = playerProperties;
 
     if (focusOnCard) {
-      this.timer = setTimeout(this._handlerTimeout, this.delay);
+      timer = setTimeout(this._handlerTimeout, delay);
     } else {
-      clearTimeout(this.timer);
-      this.timer = null;
+      clearTimeout(timer);
+      timer = null;
       this.player.current.load();
     }
   }
@@ -61,7 +59,13 @@ class VideoPlayer extends PureComponent {
 VideoPlayer.propTypes = {
   src: propTypes.string,
   poster: propTypes.string,
+
   focusOnCard: propTypes.bool,
+
+  playerProperties: propTypes.shape({
+    timer: propTypes.number || propTypes.func,
+    delay: propTypes.number.isRequired,
+  }),
 };
 
 

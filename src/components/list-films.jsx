@@ -4,14 +4,11 @@ import {connect} from "react-redux";
 
 import FilmCard from "./film-card.jsx";
 import listAllFilms from "../mocks/film";
+import withFilmCard from "../hoc/withFilmCard";
 
 class ListFilms extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currentFilmCard: null,
-    };
 
     this._handleCardTitleClick = this._handleCardTitleClick.bind(this);
     this._handleCardMouseEnter = this._handleCardMouseEnter.bind(this);
@@ -31,36 +28,39 @@ class ListFilms extends PureComponent {
   }
 
   _getFilm({name, picture, id, preview}) {
+    const WrappedFilmCard = withFilmCard(FilmCard);
+
     return (
-      <FilmCard
+      <WrappedFilmCard
         name={name}
         poster={picture}
         preview={preview}
         key={id}
 
-        onMouseClick={this._handleCardTitleClick}
-        onMouseEnter={this._handleCardMouseEnter}
+        onTitleCardClick={this._handleCardTitleClick}
+        onCardMouseEnter={this._handleCardMouseEnter}
       />
     );
   }
 
   _handleCardTitleClick(evt) {
+    const {updateState} = this.props;
     evt.preventDefault();
 
-    this.setState({
-      currentFilmCard: evt.target,
-    });
+    updateState(evt.target);
   }
 
   _handleCardMouseEnter(evt) {
-    this.setState({
-      currentFilmCard: evt.target,
-    });
+    const {updateState} = this.props;
+    updateState(evt.target);
   }
 }
 
 ListFilms.propTypes = {
   payload: propTypes.undefined || propTypes.array,
+
+  updateState: propTypes.func,
+
   listAllFilms: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,

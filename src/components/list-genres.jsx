@@ -28,7 +28,10 @@ class ListGenres extends PureComponent {
 
   _getGenre(genre, index) {
     return (
-      <li className={this._getCorrectClassName(genre)} onClick={this._handleOnGenreClick} key={this._getKey(genre, index)}>
+      <li
+        className={this._getCorrectClassName(genre)}
+        onClick={this._handleOnGenreClick}
+        key={this._getKey(genre, index)}>
         <a href="#" className="catalog__genres-link">{genre}</a>
       </li>
     );
@@ -36,13 +39,19 @@ class ListGenres extends PureComponent {
 
   _getCorrectClassName(currentGenre) {
     const {type} = this.props;
+    const active = `catalog__genres-item catalog__genres-item--active`;
+    const notActive = `catalog__genres-item`;
 
-    return type === currentGenre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`;
+    return type === currentGenre ? active : notActive;
   }
 
   _handleOnGenreClick(evt) {
+    const {updateState} = this.props;
+
     evt.preventDefault();
     this.props.changeGenre(evt);
+
+    updateState(evt.target.textContent);
   }
 
   _getKey(genre, index) {
@@ -52,7 +61,10 @@ class ListGenres extends PureComponent {
 
 ListGenres.propTypes = {
   type: propTypes.string,
+
   changeGenre: propTypes.func,
+  updateState: propTypes.func,
+
   listAllFilms: propTypes.arrayOf(propTypes.shape({
     name: propTypes.string.isRequired,
     picture: propTypes.string.isRequired,

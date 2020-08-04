@@ -6,48 +6,44 @@ import VideoPlayer from "./video-player.jsx";
 class FilmCard extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      onFocus: false,
-    };
-
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   render() {
-    const {name, poster, preview, onMouseClick, onMouseEnter} = this.props;
+    const {
+      name,
+      poster,
+      preview,
+      onTitleCardClick,
+      onCardMouseEnter,
+      focusOnCard,
+      onCardMouseOver,
+      onCardMouseLeave,
+      playerProperties,
+    } = this.props;
 
     return (
       <>
         <article
           className="small-movie-card catalog__movies-card"
-          onMouseEnter={onMouseEnter}
-          onMouseOver={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
+          onMouseEnter={onCardMouseEnter}
+          onMouseOver={onCardMouseOver}
+          onMouseLeave={onCardMouseLeave}
         >
           <div className="small-movie-card__image">
-            <VideoPlayer src={preview} poster={poster} focusOnCard={this.state.onFocus} />
+            <VideoPlayer
+              src={preview}
+              poster={poster}
+              focusOnCard={focusOnCard}
+              playerProperties={playerProperties}
+            />
           </div>
 
-          <h3 onClick={onMouseClick} className="small-movie-card__title">
+          <h3 onClick={onTitleCardClick} className="small-movie-card__title">
             <a className="small-movie-card__link" href="movie-page.html">{name}</a>
           </h3>
         </article>
       </>
     );
-  }
-
-  handleMouseEnter() {
-    this.setState({
-      onFocus: true
-    });
-  }
-
-  handleMouseLeave() {
-    this.setState({
-      onFocus: false
-    });
   }
 }
 
@@ -55,8 +51,18 @@ FilmCard.propTypes = {
   name: propTypes.string,
   poster: propTypes.string,
   preview: propTypes.string,
-  onMouseClick: propTypes.func,
-  onMouseEnter: propTypes.func,
+
+  focusOnCard: propTypes.bool,
+
+  onTitleCardClick: propTypes.func,
+  onCardMouseEnter: propTypes.func,
+  onCardMouseOver: propTypes.func,
+  onCardMouseLeave: propTypes.func,
+
+  playerProperties: propTypes.shape({
+    timer: propTypes.number || propTypes.func,
+    delay: propTypes.number.isRequired,
+  }),
 };
 
 export default FilmCard;
