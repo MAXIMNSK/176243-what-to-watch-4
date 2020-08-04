@@ -7,8 +7,6 @@ const withFilmCard = (Component) => {
 
       this.state = {
         onFocus: false,
-        play: false,
-        pause: false,
       };
 
       this.playerProperties = {
