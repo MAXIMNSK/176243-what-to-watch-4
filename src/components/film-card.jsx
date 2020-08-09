@@ -2,6 +2,9 @@ import React, {PureComponent} from "react";
 import propTypes from 'prop-types';
 
 import VideoPlayer from "./video-player.jsx";
+import withVideoPlayer from "../hoc/withVideoPlayer";
+
+const WrappedVideoPlayer = withVideoPlayer(VideoPlayer);
 
 class FilmCard extends PureComponent {
   constructor(props) {
@@ -30,7 +33,7 @@ class FilmCard extends PureComponent {
           onMouseLeave={onCardMouseLeave}
         >
           <div className="small-movie-card__image">
-            <VideoPlayer
+            <WrappedVideoPlayer
               src={preview}
               poster={poster}
               focusOnCard={focusOnCard}

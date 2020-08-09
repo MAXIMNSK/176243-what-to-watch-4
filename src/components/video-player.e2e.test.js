@@ -10,14 +10,26 @@ Enzyme.configure({
 
 describe(`Video player e2e test pack`, () => {
   it(`Video player has play state`, () => {
-    const videoPlayer = shallow(<VideoPlayer />);
+    const videoPlayer = shallow(
+        <VideoPlayer
+          isPlaying={true}
+          isPaused={false}
+        />
+    );
 
-    expect(videoPlayer.state().play).toBeDefined();
+    expect(videoPlayer.instance().props.isPlaying).toEqual(true);
+    expect(videoPlayer.instance().props.isPaused).toEqual(false);
   });
 
   it(`Video player has pause state`, () => {
-    const videoPlayer = shallow(<VideoPlayer />);
+    const videoPlayer = shallow(
+        <VideoPlayer
+          isPlaying={false}
+          isPaused={true}
+        />
+    );
 
-    expect(videoPlayer.state().pause).toBeDefined();
+    expect(videoPlayer.instance().props.isPlaying).toEqual(false);
+    expect(videoPlayer.instance().props.isPaused).toEqual(true);
   });
 });

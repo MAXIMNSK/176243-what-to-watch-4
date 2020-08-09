@@ -7,11 +7,6 @@ class VideoPlayer extends PureComponent {
 
     this.player = React.createRef();
 
-    this.state = {
-      play: false,
-      pause: false,
-    };
-
     this._handlerTimeout = this._handlerTimeout.bind(this);
   }
 
@@ -21,15 +16,25 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {focusOnCard, playerProperties} = this.props;
+    const {focusOnCard, playerProperties, updateState} = this.props;
     let {timer, delay} = playerProperties;
 
     if (focusOnCard) {
       timer = setTimeout(this._handlerTimeout, delay);
+
+      updateState({
+        isPlaying: true,
+        isPaused: false,
+      });
     } else {
       clearTimeout(timer);
       timer = null;
       this.player.current.load();
+
+      updateState({
+        isPlaying: false,
+        isPaused: true,
+      });
     }
   }
 
@@ -38,7 +43,7 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {src, poster} = this.props;
+    const {src, poster, width, height, controls, muted} = this.props;
 
     return (
       <video
@@ -46,11 +51,11 @@ class VideoPlayer extends PureComponent {
         poster={poster}
         ref={this.player}
 
-        width="280"
-        height="175"
+        width={width}
+        height={height}
 
-        controls
-        muted
+        controls={controls}
+        muted={muted}
       />
     );
   }
@@ -60,7 +65,15 @@ VideoPlayer.propTypes = {
   src: propTypes.string,
   poster: propTypes.string,
 
+  width: propTypes.string,
+  height: propTypes.string,
+  controls: propTypes.bool,
+  muted: propTypes.bool,
+
+  isPlaying: propTypes.bool,
+  isPaused: propTypes.bool,
   focusOnCard: propTypes.bool,
+  updateState: propTypes.func,
 
   playerProperties: propTypes.shape({
     timer: propTypes.number || propTypes.func,
